@@ -3,14 +3,14 @@ import Head from 'next/head'
 
 const Home = () => {
   return (
-    <div class="container">
+    <div className="container">
       <Head>
         <title>HackMTY 2020</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">Hello world!</h1>
+        <h1 className="title">GitMatch</h1>
 
         <p className="code">HackMTY 2020</p>
       </main>
