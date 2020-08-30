@@ -15,6 +15,7 @@ const Home = () => {
   const [showUsers, setShowUsers] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [results, setResults] = useState(null)
 
   const setUser = event => {
     user = event.target.value
@@ -48,7 +49,7 @@ const Home = () => {
 
     const result = await sendUsers(data)
 
-    console.log(result)
+    setResults(result)
 
     setIsLoading(false)
   }
@@ -104,6 +105,10 @@ const Home = () => {
           color={"#00a4bd"}
           loading={isLoading}
         />
+
+        {
+          results && <h1 className="match">{results['total']}% match</h1>
+        }
 
         {
           showUsers && <List data={data} />
@@ -180,6 +185,13 @@ const Home = () => {
         .title,
         .description {
           text-align: center;
+        }
+
+        .match {
+          margin: 0;
+          line-height: 1.15;
+          font-size: 4rem;
+          color: #00af3a;
         }
 
         .description {
