@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
 
 import List from './../components/List'
+import { sendUsers } from './../API'
 
 
 let user = ''
@@ -26,6 +27,12 @@ const Home = () => {
 
   const showList = () => {
     setShowUsers(!showUsers)
+  }
+
+  const analyzeUsers = async () => {
+    const result = await sendUsers(data)
+
+    console.log(result)
   }
 
   return (
@@ -62,7 +69,7 @@ const Home = () => {
               </Button>
             </Col>
             <Col>
-              <Button variant="success">
+              <Button variant="success" onClick={analyzeUsers}>
                 Analyze Users
               </Button>
             </Col>
