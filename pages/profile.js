@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Router from 'next/router'
+import Link from 'next/link'
 import { useState } from 'react'
+
 import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
 import PacmanLoader from "react-spinners/PacmanLoader"
 
@@ -13,17 +15,17 @@ const Profile = () => {
     const [results, setResults] = useState(null)
 
     const analyzeUser = async () => {
-        setIsLoading(true)
+      setIsLoading(true)
 
-        const result = await getUserData(username.toLowerCase())
+      const result = await getUserData(username.toLowerCase())
 
-        setResults(result)
+      setResults(result)
 
-        setIsLoading(false)
+      setIsLoading(false)
     }
 
     const resetData = () => {
-        Router.reload()
+      Router.reload()
     }
 
     return (
@@ -40,10 +42,10 @@ const Profile = () => {
 
             <InputGroup className="mb-3">
             <FormControl
-                placeholder="GitHub username"
-                aria-label="GitHub username"
-                aria-describedby="basic-addon2"
-                onChange={event => { setUsername(event.target.value) }}
+              placeholder="GitHub username"
+              aria-label="GitHub username"
+              aria-describedby="basic-addon2"
+              onChange={event => { setUsername(event.target.value) }}
             />
             </InputGroup>
 
@@ -66,6 +68,12 @@ const Profile = () => {
                 </Container>
             }
 
+            <Link href="/">
+              <Button variant="link">
+                Regresar
+              </Button>
+            </Link>
+
             <PacmanLoader
                 size={50}
                 color={"#00a4bd"}
@@ -75,7 +83,7 @@ const Profile = () => {
 
         <footer>
             <strong>
-                Coded by Empty File
+              Coded by Empty File
             </strong>
             <span role="img" aria-label="icon">🚀</span>
         </footer>

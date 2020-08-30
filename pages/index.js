@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Router from 'next/router'
+import Link from 'next/link'
 import { useState } from 'react'
+
 import { InputGroup, FormControl, Button, Container, Row, Col, Alert, Image } from 'react-bootstrap'
 import PacmanLoader from "react-spinners/PacmanLoader"
 
@@ -115,6 +117,12 @@ const Home = () => {
           <br />
         </Container>
 
+        <Link href="/profile">
+          <Button variant="link">
+            Visit User map
+          </Button>
+        </Link>
+        
         <PacmanLoader
           size={50}
           color={"#00a4bd"}
