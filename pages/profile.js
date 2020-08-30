@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
 import PacmanLoader from "react-spinners/PacmanLoader"
+import { TagCloud } from 'react-tagcloud'
 
 import { getUserData } from './../API'
 
@@ -19,7 +20,16 @@ const Profile = () => {
 
       const result = await getUserData(username.toLowerCase())
 
-      setResults(result)
+      // Data formatting
+      let format = []
+      result['data'].map(res => {
+        let aux = {}
+        aux.value = res[0]
+        aux.count = res[1]
+
+        format.push(aux)
+      })
+      setResults(format)
 
       setIsLoading(false)
     }
@@ -66,6 +76,15 @@ const Profile = () => {
                     </Row>
                     <br />
                 </Container>
+            }
+
+            {
+              results && 
+              <TagCloud
+                minSize={24}
+                maxSize={36}
+                tags={results}
+              />
             }
 
             <Link href="/">
