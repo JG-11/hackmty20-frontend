@@ -113,7 +113,7 @@ const Home = () => {
         />
 
         {
-          results && <h1 className="match">{results['total']}% match</h1>
+          results && <h1 className="match">Team match: {results['total']}%</h1>
         }
 
         {
