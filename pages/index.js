@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import { InputGroup, FormControl, Button } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
 
-import List from './../components/List' 
+import List from './../components/List'
 
 
 let user = ''
@@ -52,11 +52,22 @@ const Home = () => {
           </InputGroup.Append>
         </InputGroup>
 
-        <Button variant="info" onClick={showList}>
-          {
-            showUsers ? "Hide list" : "Show list"
-          }
-        </Button>
+        <Container>
+          <Row>
+            <Col md="auto">
+              <Button variant="info" onClick={showList}>
+              {
+                showUsers ? "Hide list" : "Show list"
+              }
+              </Button>
+            </Col>
+            <Col>
+              <Button variant="success">
+                Analyze Users
+              </Button>
+            </Col>
+          </Row>
+        </Container>
 
         {
           showUsers && <List data={data} />
