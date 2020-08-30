@@ -89,7 +89,7 @@ const Profile = () => {
 
             <Link href="/">
               <Button variant="link">
-                Regresar
+                Go back
               </Button>
             </Link>
 
