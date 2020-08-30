@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import { InputGroup, FormControl, Button, Container, Row, Col, Alert } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Container, Row, Col, Alert, Image } from 'react-bootstrap'
 import PacmanLoader from "react-spinners/PacmanLoader"
 
 import List from './../components/List'
@@ -113,6 +113,37 @@ const Home = () => {
         {
           showUsers && <List data={data} />
         }
+
+        {
+          results && results['combinations'] && results['combinations'].map(combination => {
+            return (
+              <Container>
+                <br />
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <Image
+                      src={combination['avatar'] ? combination['avatar'] : `https://ui-avatars.com/api/?name=${combination['user_name']}&size=250`}
+                      width={250}
+                      height={250}
+                      rounded
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <h6 className="title">{combination['user_name']}</h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <p className="description">The greater match is with <strong>{combination['person']}</strong>, with a total of <strong>{combination['ratio']}%</strong></p>
+                  </Col>
+                </Row>
+                <hr />
+              </Container>
+            )
+          })
+        }
       </main>
 
       <footer>
@@ -197,6 +228,7 @@ const Home = () => {
         .description {
           line-height: 1.5;
           font-size: 1.5rem;
+          text-align: center;
         }
 
         code {
