@@ -73,7 +73,7 @@ const Home = () => {
 
         <Container>
           <Row>
-            <Col md="auto">
+            <Col md="auto" xs="auto">
               <Button variant="info" onClick={showList}>
               {
                 showUsers ? "Hide list" : "Show list"
