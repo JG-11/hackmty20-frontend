@@ -67,6 +67,7 @@ const Home = () => {
               </Button>
             </Col>
           </Row>
+          <br />
         </Container>
 
         {
