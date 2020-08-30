@@ -24,7 +24,12 @@ const Profile = () => {
       let format = []
       result['data'].map(res => {
         let aux = {}
-        aux.value = res[0]
+        
+        if(res[0][0] == '\'') {
+          aux.value = res[0].slice(1)
+        } else {
+          aux.value = res[0]
+        }
         aux.count = res[1]
 
         format.push(aux)
