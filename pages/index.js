@@ -1,16 +1,18 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Container, Row, Col, Alert } from 'react-bootstrap'
 
 import List from './../components/List'
 import { sendUsers } from './../API'
 
 
 let user = ''
+let aux = null
 
 const Home = () => {
   const [data, setData] = useState([])
   const [showUsers, setShowUsers] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
 
   const setUser = event => {
     user = event.target.value
@@ -22,7 +24,13 @@ const Home = () => {
     data.push(user.toLowerCase())
     setData(data)
 
+    aux = user
+
     user = ''
+
+    setShowAlert(true)
+
+    setTimeout(() => setShowAlert(false), 2000)
   }
 
   const showList = () => {
@@ -46,6 +54,10 @@ const Home = () => {
         <h1 className="title">GitMatch</h1>
 
         <p className="code">HackMTY 2020</p>
+
+        <Alert key={0} variant={"success"} show={showAlert}>
+          { aux } added successfully
+        </Alert>
 
         <InputGroup className="mb-3">
           <FormControl
