@@ -84,18 +84,24 @@ const Home = () => {
 
         <Container>
           <Row>
-            <Col md="auto" xs="auto">
-              <Button variant="info" onClick={showList}>
-              {
-                showUsers ? "Hide list" : "Show list"
-              }
-              </Button>
-            </Col>
-            <Col>
-              <Button variant="success" onClick={analyzeUsers}>
-                Analyze Users
-              </Button>
-            </Col>
+            {
+              data && data.length != 0 && 
+              <Col md="auto" xs="auto">
+                <Button variant="info" onClick={showList}>
+                {
+                  showUsers ? "Hide list" : "Show list"
+                }
+                </Button>
+              </Col>
+            }
+            {
+              data && data.length >= 2 &&
+              <Col>
+                <Button variant="success" onClick={analyzeUsers}>
+                  Analyze Users
+                </Button>
+              </Col>
+            }
           </Row>
           <br />
         </Container>
