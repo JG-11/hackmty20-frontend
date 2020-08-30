@@ -69,7 +69,7 @@ const Home = () => {
       </Head>
 
       <main>
-        <h1 className="title">GitMatch</h1>
+        <h1 className="title">Tinder Hub <span role="img" aria-label="fire">🔥</span></h1>
 
         <p className="code">HackMTY 2020</p>
 
