@@ -148,7 +148,7 @@ const Home = () => {
                       src={combination['avatar'] ? combination['avatar'] : `https://ui-avatars.com/api/?name=${combination['user_name']}&size=250`}
                       width={250}
                       height={250}
-                      rounded
+                      roundedCircle
                     />
                   </Col>
                 </Row>
