@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { InputGroup, FormControl, Button, Container, Row, Col, Alert } from 'react-bootstrap'
+import PacmanLoader from "react-spinners/PacmanLoader"
 
 import List from './../components/List'
 import { sendUsers } from './../API'
@@ -13,6 +14,7 @@ const Home = () => {
   const [data, setData] = useState([])
   const [showUsers, setShowUsers] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const setUser = event => {
     user = event.target.value
@@ -38,9 +40,17 @@ const Home = () => {
   }
 
   const analyzeUsers = async () => {
+    setIsLoading(true)
+
+    if(showUsers) {
+      setShowUsers(!showUsers)
+    }
+
     const result = await sendUsers(data)
 
     console.log(result)
+
+    setIsLoading(false)
   }
 
   return (
@@ -88,6 +98,12 @@ const Home = () => {
           </Row>
           <br />
         </Container>
+
+        <PacmanLoader
+          size={50}
+          color={"#00a4bd"}
+          loading={isLoading}
+        />
 
         {
           showUsers && <List data={data} />
