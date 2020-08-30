@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Router from 'next/router'
 import { useState } from 'react'
 import { InputGroup, FormControl, Button, Container, Row, Col, Alert, Image } from 'react-bootstrap'
 import PacmanLoader from "react-spinners/PacmanLoader"
@@ -54,6 +55,10 @@ const Home = () => {
     setIsLoading(false)
   }
 
+  const resetData = () => {
+    Router.reload()
+  }
+
   return (
     <div className="container">
       <Head>
@@ -93,6 +98,10 @@ const Home = () => {
                 }
                 </Button>
               </Col>
+            }
+            {
+              data && data.length != 0 &&
+              <Button variant="warning" onClick={resetData}>Reset</Button>
             }
             {
               data && data.length >= 2 &&
