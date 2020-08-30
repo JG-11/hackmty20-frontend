@@ -16,3 +16,11 @@ export const getUserData = async (username) => {
     return result
 }
 
+export const getUserImage = async (username) => {
+    const response = await fetch(`${BASE_URL}/user/avatar/${username}`)
+
+    const result = await response.json()
+
+    return result
+}
+
