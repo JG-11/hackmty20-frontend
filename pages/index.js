@@ -1,7 +1,33 @@
 import Head from 'next/head'
+import { useState } from 'react'
+import { InputGroup, FormControl, Button } from 'react-bootstrap'
 
+import List from './../components/List' 
+
+
+let user = ''
 
 const Home = () => {
+  const [data, setData] = useState([])
+  const [showUsers, setShowUsers] = useState(false)
+
+  const setUser = event => {
+    user = event.target.value
+
+    setShowUsers(false)
+  }
+
+  const addUser = () => {
+    data.push(user)
+    setData(data)
+
+    user = ''
+  }
+
+  const showList = () => {
+    setShowUsers(!showUsers)
+  }
+
   return (
     <div className="container">
       <Head>
@@ -13,17 +39,35 @@ const Home = () => {
         <h1 className="title">GitMatch</h1>
 
         <p className="code">HackMTY 2020</p>
+
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="GitHub username"
+            aria-label="GitHub username"
+            aria-describedby="basic-addon2"
+            onChange={event => { setUser(event) }}
+          />
+          <InputGroup.Append>
+            <Button variant="outline-secondary" onClick={addUser}>Add</Button>
+          </InputGroup.Append>
+        </InputGroup>
+
+        <Button variant="info" onClick={showList}>
+          {
+            showUsers ? "Hide list" : "Show list"
+          }
+        </Button>
+
+        {
+          showUsers && <List data={data} />
+        }
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Coded by EmptyFile{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
+        <strong>
+          Coded by Empty File
+        </strong>
+        <span role="img" aria-label="icon">🚀</span>
       </footer>
 
       <style jsx>{`
