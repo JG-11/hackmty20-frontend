@@ -1,7 +1,15 @@
-const BASE_URL = 'https://728cf828b1b4.ngrok.io'
+const BASE_URL = 'http://127.0.0.1:5000'
 
 export const sendUsers = async (usernames) => {
     const response = await fetch(`${BASE_URL}/users/${usernames}`)
+
+    const result = await response.json()
+
+    return result
+}
+
+export const getUserData = async (username) => {
+    const response = await fetch(`${BASE_URL}/user/${username}`)
 
     const result = await response.json()
 
