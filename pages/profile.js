@@ -3,20 +3,24 @@ import Router from 'next/router'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Container, Row, Col, Image } from 'react-bootstrap'
 import PacmanLoader from "react-spinners/PacmanLoader"
 import { TagCloud } from 'react-tagcloud'
 
-import { getUserData } from './../API'
+import { getUserData, getUserImage } from './../API'
 
 
 const Profile = () => {
     const [username, setUsername] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [results, setResults] = useState(null)
+    const [avatar, setAvatar] = useState(null)
 
     const analyzeUser = async () => {
       setIsLoading(true)
+
+      const image = await getUserImage(username.toLowerCase())
+      setAvatar(image['data'])
 
       const result = await getUserData(username.toLowerCase())
 
@@ -81,6 +85,22 @@ const Profile = () => {
                     </Row>
                     <br />
                 </Container>
+            }
+
+            {
+              results && 
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <Image
+                      src={avatar ? avatar : `https://ui-avatars.com/api/?name=${username}&size=250`}
+                      width={250}
+                      height={250}
+                      roundedCircle
+                    />
+                  </Col>
+                </Row>
+              </Container>
             }
 
             {
