@@ -18,7 +18,7 @@ const Home = () => {
   }
 
   const addUser = () => {
-    data.push(user)
+    data.push(user.toLowerCase())
     setData(data)
 
     user = ''
