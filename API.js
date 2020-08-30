@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:5000'
+const BASE_URL = 'https://hack-mty-2020.herokuapp.com'
 
 export const sendUsers = async (usernames) => {
     const response = await fetch(`${BASE_URL}/users/${usernames}`)
